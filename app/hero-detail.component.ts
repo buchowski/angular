@@ -20,6 +20,7 @@ import 'rxjs/add/operator/switchMap';
 				</label>	
 			</div>
 			<button (click)="goBack()">Go Back</button>
+			<button (click)="save()">Save</button>
 		</div>
 		`,
 	styleUrls: ['hero-detail.component.css']
@@ -40,5 +41,9 @@ export class HeroDetailComponent implements OnInit {
 	}
 	goBack(): void {
 		this.location.back();
+	}
+	save(): void {
+		this.heroService.update(this.hero)
+			.then(() => this.goBack());
 	}
 }
